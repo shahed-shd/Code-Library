@@ -8,13 +8,15 @@ int temp[MAXN];
 
 void mergeSort(int left, int right)
 {
-    if(left == right) return;
+    if(left == right) return;   // Only one element is considered to be sorted.
 
+    // Divide.
     int mid = (left + right) / 2;
 
     mergeSort(left, mid);
     mergeSort(mid+1,right);
 
+    // Merge.
     int i = left, j = mid+1;
 
     for(int k = left; k <= right; ++k) {
@@ -24,6 +26,7 @@ void mergeSort(int left, int right)
             temp[k] = arr[j++];
     }
 
+    // Copy.
     for(int k = left; k <= right; ++k)
         arr[k] = temp[k];
 }
