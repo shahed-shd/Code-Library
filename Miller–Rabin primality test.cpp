@@ -4,31 +4,11 @@
 #include <cstdlib>
 using namespace std;
 
-typedef     long long       LL;
+typedef     unsigned long long       ULL;
 
-LL modular_pow(LL base, LL exponent, LL modulus)
+ULL modular_mul(ULL a, ULL b, ULL modulus)
 {
-    if(modulus == 1) return 0;
-
-    LL result = 1;
-    base %= modulus;
-
-    while(exponent > 0) {
-        if(exponent & 1) {
-            result = (result * base) % modulus;
-        }
-
-        exponent >>= 1;
-        base = (base * base) % modulus;
-    }
-
-    return result;
-
-}
-
-LL modular_mul(LL a, LL b, LL modulus)
-{
-    LL result = 0;
+    ULL result = 0;
     a %= modulus;
 
     while(b > 0) {
@@ -43,23 +23,43 @@ LL modular_mul(LL a, LL b, LL modulus)
     return result % modulus;
 }
 
-bool isPrime(LL n, int iteration)
+ULL modular_pow(ULL base, ULL exponent, ULL modulus)
+{
+    if(modulus == 1) return 0;
+
+    ULL result = 1;
+    base %= modulus;
+
+    while(exponent > 0) {
+        if(exponent & 1) {
+            result = modular_mul(result, base, modulus);
+        }
+
+        exponent >>= 1;
+        base = modular_mul(base, base, modulus);
+    }
+
+    return result;
+
+}
+
+bool isPrime(ULL n, int iteration)
 {
     if(n < 2) return false;
     if(n <= 3) return true;
     if(!(n & 1)) return false;              // If n is even.
 
-    LL d = n-1;                             // d * 2^r = n-1 where d is odd and r > 0.
+    ULL d = n-1;                             // d * 2^r = n-1 where d is odd and r > 0.
     while(!(d & 1))
         d >>= 1;
 
     while(iteration--) {                    // Witness loop.
-        LL a = rand() % (n-1) + 1;
-        LL x = modular_pow(a, d, n);        // x = a^d % n
-        LL d1 = d;
+        ULL a = rand() % (n-1) + 1;
+        ULL x = modular_pow(a, d, n);        // x = a^d % n
+        ULL d1 = d;
 
         while(d1 != n-1 && x != 1 && x != n-1) {
-            x = modular_mul(x, x, n);       // This statement can be replaced with   x = modular_pow(x, 2, n).
+            x = modular_mul(x, x, n);
             d1 <<= 1;
         }
 
@@ -73,9 +73,9 @@ bool isPrime(LL n, int iteration)
 
 int main()
 {
-    LL n;
+    ULL n;
 
-    while(scanf("%lld", &n) != EOF)
+    while(scanf("%llu", &n) != EOF)
         (isPrime(n, 5))? puts("Yes") : puts("No");
 
     return 0;
