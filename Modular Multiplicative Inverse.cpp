@@ -39,3 +39,20 @@ int main()
 
     return 0;
 }
+
+
+// Extended Euclidean Algorithm - Recursive method.
+/*
+
+int x, y, gcd;
+
+void extEuclid(int a, int b)
+{
+	if (b == 0) { x = 1, y = 0, gcd = a; return; }
+
+	extEuclid(b, a % b);
+	x = x - (a / b) * y;
+	swap(x, y);
+}
+
+*/
