@@ -1,5 +1,5 @@
 // Josephus problem.
-// Related link:  http://e-maxx.ru/algo/joseph_problem
+// Related link:    http://e-maxx.ru/algo/joseph_problem
 
 #include <cstdio>
 using namespace std;
@@ -7,17 +7,17 @@ using namespace std;
 /*
 int josephus(int n, int k)      // Time complexity: O(k log(n)). Efficient for small k.
 {                               // In 0 based indexing.
-	if (n == 1)  return 0;
-	if (k == 1)  return n-1;
-	if (k > n)  return (josephus(n-1, k) + k) % n;
+    if (n == 1)  return 0;
+    if (k == 1)  return n-1;
+    if (k > n)  return (josephus(n-1, k) + k) % n;
 
-	int cnt = n / k;
-	int res = josephus(n - cnt, k);
+    int cnt = n / k;
+    int res = josephus(n - cnt, k);
     res -= n % k;
-	if (res < 0) res += n;
-	else res += res / (k - 1);
+    if (res < 0) res += n;
+    else res += res / (k - 1);
 
-	return res;
+    return res;
 }
 */
 
