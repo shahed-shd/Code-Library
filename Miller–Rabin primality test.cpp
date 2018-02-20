@@ -79,3 +79,51 @@ int main()
 
     return 0;
 }
+
+
+// The above isPrime() can be replaced with the function below.
+// The calculation is same but it is more verbose.
+/*
+
+bool isPrime(ULL n, int iteration)
+{
+    if(n < 2) return false;
+    if(n <= 3) return true;
+    if(!(n & 1)) return false;              // If n is even.
+
+    ULL d = n-1, r = 0;
+    
+    while(!(d & 1)) {                       // Calculate d, r
+        d >>= 1;                            // Such that d * 2^r = n-1 where d is odd and r > 0.
+        ++r;
+    }
+
+    while(iteration--) {                    // Witness loop.
+        ULL a = rand() % (n-3) + 2;         // Random number [2, n-2]
+        ULL x = modular_pow(a, d, n);       // x = a^d % n
+
+        if(x == 1 or x == n-1) continue;    // So, after repeated square, a^(n-1) = 1 (mod n)
+
+        bool continue_witness_loop = false;
+
+        for(int i = 1; i < r; ++i) {        // Loop r-1 times.
+            x = modular_mul(x, x, n);       // x = (x * x) % n.
+
+            if(x == 1) {
+                return false;               // Composite.
+            }
+            else if(x == n-1) {
+                continue_witness_loop = true;   // So, after repeated square, a^(n-1) = 1 (mod n)
+                break;
+            }
+        }
+
+        if(continue_witness_loop) continue;
+
+        return false;                       // Composite.
+    }
+
+    return true;    // Probably prime
+}
+
+*/
