@@ -1,6 +1,7 @@
 # Topics
 ---
 - **Data structure:**
+    - Binary indexed tree : [< />](https://github.com/shahed-shd/Code-Library/blob/master/binary_indexed_tree.cpp "Implementation in C++") [< />](https://github.com/shahed-shd/Code-Library/blob/master/BinIdxTreeDemo.java "Implementation in Java")
     - Persistent segment tree : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Persistent%20segment%20tree%20implementation%20with%20array.cpp "Implementation")
     - Sliding window minimum : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Sliding%20window%20minimum.cpp "Implementation") [🔗](https://people.cs.uct.ac.za/~ksmith/articles/sliding_window_minimum.html)
     - Suffix array construction : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Suffix%20array%20construction.cpp "Implementation")
