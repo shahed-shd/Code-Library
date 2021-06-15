@@ -23,6 +23,7 @@
     - Modular exponentiation : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Modular%20exponentiation%20-%20Right-to-left%20binary%20method.cpp "Right-to-left binary method")
     - Modular Multiplicative Inverse : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Modular%20Multiplicative%20Inverse.cpp)
     - Segmented Sieve : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Segmented%20Sieve.cpp "Implementation")
+  -  Sieve of Eratosthenes : [< />](https://github.com/shahed-shd/Code-Library/blob/master/sieve_of_eratosthenes.cpp "Implementation") [🔗](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes "Wikipedia")
 
 - **Sort:**
     - Merge sort : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Merge%20sort.cpp "Implementaion")
