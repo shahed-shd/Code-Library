@@ -5,51 +5,73 @@
 #include <cmath>
 using namespace std;
 
-void sieve(int upto, vector<int> &primes)
-{
-    vector<bool> status(upto+3, true);
-    int rt = sqrt(upto);
+vector<bool> sieve(int n) {
+    vector<bool> isPrime(n + 1, true);
 
-    for(int i = 3; i <= rt; i += 2)
-        if(status[i])
-            for(int j = i*i; j <= upto; j += i<<1)
-                status[j] = false;
+    isPrime[0] = isPrime[1] = false;
 
-    //primes.push_back(2);
-    for(int i = 3; i <= upto; i+=2)
-        if(status[i])
-            primes.push_back(i);
+    for (int i = 4; i <= n; i += 2) {
+        isPrime[i] = false;
+    }
+    
+    int rt = sqrt(n);
+
+    for (int i = 3; i <= rt; i += 2) {
+        if (isPrime[i]) {
+            for (int j = i * i; j <= n; j += (i << 1)) {
+                isPrime[j] = false;
+            }
+        }
+    }
+
+    return isPrime;
 }
+
+
+vector<int> getPrimes(const vector<bool>& isPrime) {
+    vector<int> primes;
+    primes.push_back(2);
+
+    int sz = isPrime.size();
+
+    for (int i = 3; i < sz; i += 2) {
+        if (isPrime[i]) {
+            primes.push_back(i);
+        }
+    }
+
+    return primes;
+}
+
 
 void segmentedSieve(int n)
 {
-    int segmentSize = sqrt(n);      // To divide the range [0..n] in segments,
-                                    // chosen segment size is sqrt(n).
-    vector<int> primes;
-    sieve(segmentSize, primes);     // Get all primes upto sqrt(n).
+    int segmentSize = sqrt(n);      // To divide the range [0..n] in segments, chosen segment size is sqrt(n).
 
-    cout << 2;
-    for(auto &p : primes)           // Prints the primes upto sqrt(n).
+    vector<bool> isPrime = sieve(segmentSize);
+    vector<int> primes = getPrimes(isPrime);    // Get all primes upto sqrt(n).
+
+    for(const auto& p : primes)                 // Prints the primes upto sqrt(n).
         cout << ' ' << p;
 
-    int low = segmentSize+1, high = 2*segmentSize;
+    int low = segmentSize + 1, high = 2 * segmentSize;
 
-    while(low < n) {
-        vector<bool> status(segmentSize+3, true);
+    while(low <= n) {
+        vector<bool> status(segmentSize + 1, true);
 
-        for(auto &p : primes) {         // Use found primes by sieve() to find primes in current range.
-            int s = ceil(1.0 * low / p) * p;        // Find minimum multiple of p in range [low..high].
-            if(!(s & 1)) s += p;                    // If s is even, take the next odd multiple of p.
+        for(const auto& p : primes) {         // Use found primes by sieve() to find primes in current range.
+            int s = ceil(1.0 * low / p) * p;            // Find minimum multiple of p in range [low..high].
+            while(!(s & 1) && s <= high) s += p;        // If s is even, take the next odd multiple of p in that range.
 
-            for(int i = s; i <= high; i += p<<1)    // Mark odd multiples of p.
-                status[i-low] = false;
+            for(int i = s; i <= high; i += (p << 1))    // Mark odd multiples of p.
+                status[i - low] = false;
         }
 
-        for(int i = low + !(low&1); i <= high; i+=2)// Check only the odd numbers in range [low..high].
-            if(status[i-low])
+        for(int i = low + !(low & 1); i <= high; i += 2)    // Check only the odd numbers in range [low..high].
+            if(status[i - low])
                 cout << ' ' << i;
 
-        low = low + segmentSize;                    // Update low and high for next segment.
+        low = low + segmentSize;                        // Update low and high for next segment.
         high = high + segmentSize;
         if(high > n) high = n;
     }
