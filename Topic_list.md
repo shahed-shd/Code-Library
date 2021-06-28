@@ -19,6 +19,7 @@
     - Fermat's last theorem : [🔗](https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem "Wikipedia")
     - Fermat's little theorem : [🔗](https://en.wikipedia.org/wiki/Fermat%27s_little_theorem "Wikipedia")
     - Josephus problem [< />](https://github.com/shahed-shd/Code-Library/blob/master/Josephus%20problem.cpp "Implementation")
+    - Matrix expo : [< />](https://github.com/shahed-shd/Code-Library/blob/master/matrix_expo.cpp "Implementation") [🔗](http://zobayer.blogspot.com/2010/11/matrix-exponentiation.html)
     - Miller–Rabin primality test :  [< />](https://github.com/shahed-shd/Code-Library/blob/master/Miller%E2%80%93Rabin%20primality%20test.cpp "Implementation") [🔗](https://www.topcoder.com/community/data-science/data-science-tutorials/primality-testing-non-deterministic-algorithms/ "Topcoder") [🔗](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test "Wikipedia")
     - Modular exponentiation : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Modular%20exponentiation%20-%20Right-to-left%20binary%20method.cpp "Right-to-left binary method")
     - Modular Multiplicative Inverse : [< />](https://github.com/shahed-shd/Code-Library/blob/master/Modular%20Multiplicative%20Inverse.cpp)
